@@ -1,6 +1,6 @@
 # stocktailor
 
-> Stocktailor user application
+Stocktailor user application - Please check "develop" branch for latest version
 
 ## Build Setup
 
