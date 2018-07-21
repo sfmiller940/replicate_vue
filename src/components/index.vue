@@ -20,7 +20,6 @@ export default {
   created () {
     var self = this
     axios.get('/api/etf').then((response) => {
-      console.log(response.data['etfs'])
       self.etfs = response.data['etfs']
     })
   }
