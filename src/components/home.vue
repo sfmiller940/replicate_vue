@@ -1,16 +1,17 @@
 <template>
   <div class="hello">
+    <img src="./assets/logo.png">
+    <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Brand name indices for less!</h2>
+    <button>Replicate ETF</button>
     <div v-for="etf in etfs" :key="etf.id">{{ etf.symbol }}</div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  name: 'index',
+  name: 'home',
   data () {
     return {
       msg: 'MyFolio',
@@ -18,8 +19,9 @@ export default {
     }
   },
   created () {
+    console.log(this.$parent)
     var self = this
-    axios.get('/api/etf').then((response) => {
+    this.$parent.axios.get('/api/etf').then((response) => {
       self.etfs = response.data['etfs']
     })
   }
@@ -41,5 +43,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.hello img{
+  transform: rotate(180deg);
 }
 </style>

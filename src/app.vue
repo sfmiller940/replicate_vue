@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <img src="./assets/logo.png">
+    <top></top>
     <router-view/>
   </div>
 </template>
 
 <script>
+import top from './components/top'
 export default {
-  name: 'App'
+  name: 'app',
+  components: {
+    'top': top
+  }
 }
 </script>
 
@@ -19,10 +22,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-
-#app img{
-  transform: rotate(180deg);
 }
 </style>

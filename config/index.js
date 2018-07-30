@@ -45,7 +45,7 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '/var/www/myfolio/app/static/index.html'),
+    index: '/var/www/myfolio/app/static/index.html',
 
     // Paths
     assetsRoot: '/var/www/myfolio/app/static',
