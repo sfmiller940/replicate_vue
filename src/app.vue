@@ -20,7 +20,7 @@ export default {
   box-sizing: border-box;
 }
 body,html{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
