@@ -1,7 +1,12 @@
 <template>
   <header>
-    <a>Login</a>
-    <span class="coming">Coming Soon!</span>
+    <div class="user">
+      <a>Login</a>
+      <span class="coming">Coming Soon!</span>
+    </div>
+    <div class="logo">
+      <router-link to="/">Home</router-link>
+    </div>
   </header>
 </template>
 
@@ -17,12 +22,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header{
-  text-align: right;
-  margin: 1rem 1rem 5rem;
+  float: left;
+  width: 100%;
+  padding: 1rem 1rem 5rem;
+}
+.user{
+  float: right;
 }
 .coming{
   float: right;
   color: red;
   margin-left: 1rem;
+}
+.logo{
+  float: left;
 }
 </style>

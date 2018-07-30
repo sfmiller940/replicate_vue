@@ -2,18 +2,24 @@
   <div class="hello">
     <img src="./assets/logo.png">
     <img src="./assets/logo.png">
-    <h1>Stock Tailor</h1>
-    <h2>Brand name indices for less!</h2>
-    <router-link to="/etf">Replicate ETF</router-link>
+    <div v-for="etf in etfs" :key="etf.id">{{ etf.symbol }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'etf',
   data () {
     return {
+      etfs: []
     }
+  },
+  created () {
+    console.log(this.$parent)
+    var self = this
+    this.$parent.axios.get('/api/etf').then((response) => {
+      self.etfs = response.data['etfs']
+    })
   },
   methods: {
   }
@@ -22,9 +28,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 a {
   color: #42b983;
 }
