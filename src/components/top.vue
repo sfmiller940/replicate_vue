@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="user">
-      <a>Login</a>
+      <router-link to="/">Login</router-link>
       <span class="coming">Coming Soon!</span>
     </div>
     <div class="logo">

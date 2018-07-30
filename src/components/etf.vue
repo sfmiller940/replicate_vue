@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="etf">
     <img src="./assets/logo.png">
     <img src="./assets/logo.png">
     <div v-for="etf in etfs" :key="etf.id">{{ etf.symbol }}</div>
@@ -28,10 +28,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-a {
-  color: #42b983;
+.etf{
+  text-align: center;
 }
-.hello img{
+.etf img{
   transform: rotate(180deg);
 }
 </style>

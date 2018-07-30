@@ -19,11 +19,16 @@ export default {
 *{
   box-sizing: border-box;
 }
-#app {
+body,html{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  font-size: 16px;
   color: #2c3e50;
+}
+a {
+  color: #42b983;
+  text-decoration: none;
+  font-weight: bold;
 }
 </style>
