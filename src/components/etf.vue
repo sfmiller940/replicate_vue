@@ -3,7 +3,7 @@
     <img src="./assets/logo.png">
     <img src="./assets/logo.png">
     <div v-for="stock in stocks" :key="stock.id">
-      <input type="checkbox" v-bind:id="'stock'+stock.id" v-bind:value="stock.id" v-model="checked">
+      <input type="checkbox" :id="'stock'+stock.id" :value="stock.id" v-model="basket">
       <label v-bind:for="'stock'+stock.id">{{ stock.symbol }}</label>
     </div>
   </div>
@@ -15,15 +15,14 @@ export default {
   data () {
     return {
       stocks: [],
-      checked: []
+      basket: []
     }
   },
   created () {
-    console.log(this.$parent)
     var self = this
     this.$parent.axios.get('/api/etf/' + this.$parent.$route.params.id).then((response) => {
-      console.log(response.data)
       self.stocks = response.data['etf'].stocks
+      self.basket = self.stocks.map(stock => stock.id)
     })
   },
   methods: {
