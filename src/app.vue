@@ -31,4 +31,7 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+.center{
+  text-align: center;
+}
 </style>

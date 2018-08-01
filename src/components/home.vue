@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-    <img src="./assets/logo.png">
-    <img src="./assets/logo.png">
+  <div class="center">
     <h1>Stock Tailor</h1>
     <h2>Brand name indices for less!</h2>
     <router-link to="/etf">Replicate ETF</router-link>
@@ -24,11 +22,5 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-.hello{
-  text-align: center;
-}
-.hello img{
-  transform: rotate(180deg);
 }
 </style>

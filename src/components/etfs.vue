@@ -1,7 +1,5 @@
 <template>
-  <div class="etfs">
-    <img src="./assets/logo.png">
-    <img src="./assets/logo.png">
+  <div class="center">
     <div v-for="etf in etfs" :key="etf.id">
       <router-link :to="{path: '/etf/' + etf.id}">
         {{ etf.symbol }}
@@ -31,10 +29,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.etfs{
-  text-align: center;
-}
-.etfs img{
-  transform: rotate(180deg);
-}
 </style>

@@ -1,7 +1,5 @@
 <template>
-  <div class="etf">
-    <img src="./assets/logo.png">
-    <img src="./assets/logo.png">
+  <div class="center">
     <div v-for="stock in stocks" :key="stock.id">
       <input type="checkbox" :id="'stock'+stock.id" :value="stock.id" v-model="basket">
       <label v-bind:for="'stock'+stock.id">{{ stock.symbol }}</label>
@@ -32,10 +30,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.etf{
-  text-align: center;
-}
-.etf img{
-  transform: rotate(180deg);
-}
 </style>
