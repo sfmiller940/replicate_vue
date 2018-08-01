@@ -5,7 +5,7 @@
       <span class="coming">Coming Soon!</span>
     </div>
     <div class="logo">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">Stock Tailor</router-link>
     </div>
   </header>
 </template>

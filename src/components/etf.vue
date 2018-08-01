@@ -2,7 +2,10 @@
   <div class="etf">
     <img src="./assets/logo.png">
     <img src="./assets/logo.png">
-    <div v-for="etf in etfs" :key="etf.id">{{ etf.symbol }}</div>
+    <div v-for="stock in stocks" :key="stock.id">
+      <input type="checkbox" v-bind:id="'stock'+stock.id" v-bind:value="stock.id" v-model="checked">
+      <label v-bind:for="'stock'+stock.id">{{ stock.symbol }}</label>
+    </div>
   </div>
 </template>
 
@@ -11,14 +14,16 @@ export default {
   name: 'etf',
   data () {
     return {
-      etfs: []
+      stocks: [],
+      checked: []
     }
   },
   created () {
     console.log(this.$parent)
     var self = this
-    this.$parent.axios.get('/api/etf').then((response) => {
-      self.etfs = response.data['etfs']
+    this.$parent.axios.get('/api/etf/' + this.$parent.$route.params.id).then((response) => {
+      console.log(response.data)
+      self.stocks = response.data['etf'].stocks
     })
   },
   methods: {
