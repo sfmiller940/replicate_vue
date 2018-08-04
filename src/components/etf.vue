@@ -15,26 +15,27 @@ export default {
       assets: [],
       basket: [],
       etf_id: this.$parent.$route.params.id,
-      user: {}
+      storj: {}
     }
   },
   created () {
-    if (!localStorage.getItem('user')) localStorage.setItem('user', JSON.stringify({'assets': {}, 'baskets': {}}))
-    this.user = JSON.parse(localStorage.getItem('user'))
-    if (this.user['assets'].hasOwnProperty(this.etf_id.toString())) this.assets = this.user['assets'][this.etf_id]
-    if (this.user['baskets'].hasOwnProperty(this.etf_id.toString())) this.basket = this.user['baskets'][this.etf_id]
-    if (!(this.assets && this.basket)) {
+    if (!localStorage.getItem('storj')) localStorage.setItem('storj', JSON.stringify({'assets': {}, 'baskets': {}}))
+    this.storj = JSON.parse(localStorage.getItem('storj'))
+    if (this.storj['assets'].hasOwnProperty(this.etf_id.toString())) this.assets = this.storj['assets'][this.etf_id]
+    if (this.storj['baskets'].hasOwnProperty(this.etf_id.toString())) this.basket = this.storj['baskets'][this.etf_id]
+    if (!(this.assets.length && this.basket.length)) {
       var self = this
       this.$parent.axios.get('/api/etf/' + this.etf_id).then((response) => {
         self.assets = response.data['etf'].basket
         self.basket = self.assets.map(asset => asset.id)
       })
     }
+    console.log(this.storj)
   },
   beforeDestroy () {
-    this.user['assets'][this.etf_id] = this.assets
-    this.user['baskets'][this.etf_id] = this.basket
-    localStorage.setItem('user', JSON.stringify(this.user))
+    this.storj['assets'][this.etf_id] = this.assets
+    this.storj['baskets'][this.etf_id] = this.basket
+    localStorage.setItem('storj', JSON.stringify(this.storj))
   },
   methods: {
   }
