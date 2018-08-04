@@ -1,8 +1,8 @@
 <template>
   <div class="center">
-    <div v-for="stock in stocks" :key="stock.id">
-      <input type="checkbox" :id="'stock'+stock.id" :value="stock.id" v-model="basket">
-      <label v-bind:for="'stock'+stock.id">{{ stock.symbol }}</label>
+    <div v-for="asset in assets" :key="asset.id">
+      <input type="checkbox" :id="'asset'+asset.id" :value="asset.id" v-model="basket">
+      <label v-bind:for="'asset'+asset.id">{{ asset.symbol }}</label>
     </div>
   </div>
 </template>
@@ -12,16 +12,29 @@ export default {
   name: 'etf',
   data () {
     return {
-      stocks: [],
-      basket: []
+      assets: [],
+      basket: [],
+      etf_id: this.$parent.$route.params.id,
+      user: {}
     }
   },
   created () {
-    var self = this
-    this.$parent.axios.get('/api/etf/' + this.$parent.$route.params.id).then((response) => {
-      self.stocks = response.data['etf'].stocks
-      self.basket = self.stocks.map(stock => stock.id)
-    })
+    if (!localStorage.getItem('user')) localStorage.setItem('user', JSON.stringify({'assets': {}, 'baskets': {}}))
+    this.user = JSON.parse(localStorage.getItem('user'))
+    if (this.user['assets'].hasOwnProperty(this.etf_id.toString())) this.assets = this.user['assets'][this.etf_id]
+    if (this.user['baskets'].hasOwnProperty(this.etf_id.toString())) this.basket = this.user['baskets'][this.etf_id]
+    if (!(this.assets && this.basket)) {
+      var self = this
+      this.$parent.axios.get('/api/etf/' + this.etf_id).then((response) => {
+        self.assets = response.data['etf'].basket
+        self.basket = self.assets.map(asset => asset.id)
+      })
+    }
+  },
+  beforeDestroy () {
+    this.user['assets'][this.etf_id] = this.assets
+    this.user['baskets'][this.etf_id] = this.basket
+    localStorage.setItem('user', JSON.stringify(this.user))
   },
   methods: {
   }
