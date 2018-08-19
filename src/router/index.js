@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import etfs from '@/components/etfs'
 import etf from '@/components/etf'
+import replicate from '@/components/replicate'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/etf/:id',
       name: 'etf',
       component: etf
+    },
+    {
+      path: '/etf/:id/replicate',
+      name: 'replicate',
+      component: replicate
     }
   ]
 })

@@ -16,7 +16,7 @@ export default {
       etfs: []
     }
   },
-  created () {
+  mounted () {
     var self = this
     this.$parent.axios.get('/api/etf').then((response) => {
       self.etfs = response.data['etfs']
