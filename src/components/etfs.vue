@@ -20,7 +20,6 @@ export default {
     var self = this
     this.$parent.axios.get('/api/etf').then((response) => {
       self.etfs = response.data
-      console.log(response)
     })
   },
   methods: {

@@ -1,6 +1,8 @@
 <template>
   <div class="center">
-    response here
+    <div v-for="asset in basket" v-bind:key="asset.id" v-if="asset.weight">
+      {{asset.id}} - {{ parseFloat(100*asset.weight).toFixed(2) }}%
+    </div>
   </div>
 </template>
 
@@ -25,10 +27,12 @@ export default {
       return
     }
     this.basket = this.sesh['baskets'][this.etf_id]
+    var self = this
     this.$parent.axios
       .post('/api/replicate', {basket: this.basket.concat([parseInt(this.etf_id)])})
       .then((response) => {
         console.log(response)
+        self.basket = response.data
       })
   },
   beforeDestroy () {
