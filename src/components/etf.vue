@@ -29,7 +29,7 @@ export default {
     if (!(this.assets.length && this.basket.length)) {
       var self = this
       this.$parent.axios.get('/api/etf/' + this.etf_id).then((response) => {
-        self.assets = response.data['etf'].basket
+        self.assets = response.data.basket
         self.basket = self.assets.map(asset => asset.id)
       })
     }
